@@ -1,3 +1,3 @@
 Glegooder
 =========
-TOdo list and Pomodoro Technique
+Todo list and Pomodoro Technique
