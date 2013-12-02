@@ -13,23 +13,24 @@ PASSWORD = "admin"
 app = Flask(__name__)
 app.config.from_object(__name__)
 
+g = {}
 
 def get_db():
     if not hasattr(g, "connection"):
         g.connection = pymongo.MongoClient()
     return g.connection
 
-@teardown_request
+@app.teardown_request
 def teardown_request(error):
     if hasattr(g, "connection"):
         g.connection.disconnect()
 
 
-@app.route("/add", method=['POST'])
+@app.route("/add", methods=['POST'])
 def create_todo_event():
     pass
 
-@app.route("/register", method=['GET', 'POST'])
+@app.route("/register", methods=['GET', 'POST'])
 def register():
     if request.method == "POST":
         error_list = []
